@@ -19,14 +19,20 @@ def tiff_splitter(filename, target_dir = None, output_names = None, invert_image
 
 	# target directory assertion
 	if target_dir is not None:
-		assert os.path.exists(target_dir), "Error: target_dir does not exist"
-		if target_dir[-1] != "/":		# append forward slash if not present
-			target_dir += "/"
+		try:
+			assert os.path.exists(target_dir)
+		except AssertionError:
+			print(f"Making directory '{target_dir}' for image output")
+			os.mkdir(target_dir)
+	if target_dir[-1] != "/":	# append forward slash if not present
+		target_dir += "/"
+
 	else:
 		target_dir = os.getcwd()
 
 	# name length assertion
 	if output_names is not None:
+		assert iter(output_names), "Error: output_names is not iterable."
 		assert len(output_names) == len(img_stack), "Error: len(output_names) != len(img_stack)"
 	else:
 		output_names = [str(f"img_{i+1}.tif") for i in range(len(img_stack))]
@@ -66,7 +72,7 @@ def tiff_splitter(filename, target_dir = None, output_names = None, invert_image
 	stack_list = _stack_split(img_stack)
 	_save_image(stack_list, target_dir, output_names)
 	if return_data:
-		return stack_list
+		return np.stack(stack_list, axis = 2)
 		print("Tiff file split!")
 	else:
 		print("Tiff file split!")
