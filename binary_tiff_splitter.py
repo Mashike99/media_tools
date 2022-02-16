@@ -70,9 +70,3 @@ def tiff_splitter(filename, target_dir = None, output_names = None, invert_image
 		print("Tiff file split!")
 	else:
 		print("Tiff file split!")
-
-
-x1 = tiff_splitter("./histology_data/12_13_21/Carrizo/Drawing of Carrizo.tif",
-	target_dir = "C:/Users/bbmeyering/Desktop/histology_data/12_13_21/Carrizo/",
-	invert_images = True,
-	return_data = False)
