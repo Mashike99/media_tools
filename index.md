@@ -35,3 +35,14 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+
+```
+here is a snippet
+```
+
+Can I add latex
+$y = \beta_0 + \beta_1x_1 + \beta_2x_2$
+
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
+
